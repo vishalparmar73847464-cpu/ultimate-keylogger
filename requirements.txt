@@ -1,0 +1,10 @@
+requests
+pynput
+opencv-python
+numpy
+pyautogui
+psutil
+pywin32
+cryptography
+Pillow
+pyperclip
