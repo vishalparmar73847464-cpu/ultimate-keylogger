@@ -1,10 +1,10 @@
-requests
-pynput
 opencv-python
 numpy
 pyautogui
 psutil
+requests
+pyperclip
+pynput
 pywin32
 cryptography
 Pillow
-pyperclip
