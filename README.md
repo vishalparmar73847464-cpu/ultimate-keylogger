@@ -1,102 +1,228 @@
-# ULTIMATE KEYLOGGER v4.0
+# Ultimate Keylogger Security Lab
 
-> **Developer: Vishal Pentest**
->
-> **For Authorized Penetration Testing & Security Research Only**
->
-> **⚠️ Kanooni Chetavani:** Is tool ka unauthorized istemal karna kanuni jurm hai. Sirf authorized pentesting ke liye istemal karein.
+> **Developer:** Vishal Pentest
+> **Purpose:** Authorized Security Research & Controlled Lab Testing
 
----
-
-## 📋 Vishal Pentest Ka Sandesh
-
-> *"Yeh tool maine cybersecurity professionals aur authorized penetration testers ki madad ke liye banaya hai. Iska galat istemal na karein. Zimmedari se istemal karein aur hamesha permission lekar hi test karein. Ethical hacking ka matlab hai authorized hacking."*
->
-> — **Vishal Pentest**
-
----
-
-## 📑 Table of Contents
-
-1. [Overview](#-overview)
-2. [Key Features](#-key-features)
-3. [Technical Architecture](#-technical-architecture)
-4. [Dependencies](#-dependencies-required-libraries)
-5. [Installation](#-installation-step-by-step)
-6. [Configuration](#-configuration)
-7. [Usage](#-usage-kaise-use-karein)
-8. [Sample Output](#-sample-output-telegram-par-kaise-dikhega)
-9. [Detection & Evasion](#-detection--evasion-pata-kaise-nahi-lagta)
-10. [Version History](#-version-history)
-11. [Contributing](#-contributing)
-12. [Contact](#-contact-developer)
-13. [Legal Disclaimer](#-kanooni-chetavani-legal-disclaimer)
+⚠️ **Warning:** This project is intended only for systems where you have explicit authorization to perform security testing. Do not deploy it on other people's devices or use it to collect credentials, private communications, or personal data.
 
 ---
 
 ## 📋 Overview
 
-**Ultimate Keylogger v4.0** ek comprehensive Windows surveillance aur monitoring tool hai jo **Vishal Pentest** dwara banaya gaya hai. Yeh tool authorized security assessments, red team operations, aur penetration testing engagements ke liye design kiya gaya hai. Yeh Telegram ko Command & Control (C2) channel ke roop mein integrate karta hai, jisse real-time exfiltration hoti hai.
+**Ultimate Keylogger Security Lab** is a cybersecurity research project designed to demonstrate how endpoint monitoring threats can capture user-input and system telemetry.
 
-### Kya Kya Data Exfiltrate Hota Hai:
+The project can be used in an isolated laboratory to study:
 
-| Type | Kya Capture Hota Hai |
-|------|----------------------|
-| ⌨️ Keystrokes | Har key jo user type karta hai, active window ke naam ke saath |
-| 📸 Screenshots | Live desktop screenshot with timestamp overlay |
-| 🎥 Webcam | Connected webcam se image capture |
-| 📋 Clipboard | Jo bhi user copy karta hai (passwords, URLs, etc.) |
-| 💻 System Info | Computer name, username, CPU usage, RAM usage |
+* Endpoint monitoring techniques
+* Keyboard-input capture risks
+* Screenshot monitoring risks
+* Clipboard exposure
+* Webcam-access risks
+* Host/system telemetry
+* Security detection and defensive controls
+* Data-exfiltration indicators
 
----
-
-## 🚀 Key Features
-
-| # | Feature | Description | Interval |
-|---|---------|-------------|----------|
-| 1 | ⌨️ **Keystroke Logging** | Har key capture hoti hai active window ke naam ke saath. Jaise: `[14:23:05] <Chrome>: password123` | Real-time (instant) |
-| 2 | 📸 **Screenshot Capture** | Desktop ki live screenshot li jaati hai aur Telegram par bheji jaati hai. Overlay mein timestamp aur window name hota hai | Har 20 seconds mein |
-| 3 | 🎥 **Webcam Capture** | Connected webcam se image capture hoti hai aur Telegram par bheji jaati hai | Har 60 seconds mein |
-| 4 | 📋 **Clipboard Monitoring** | Clipboard mein kuch bhi copy hota hai toh woh turant Telegram par bhej diya jata hai | Har 12 seconds mein check hota hai |
-| 5 | 💻 **System Fingerprinting** | System ki complete information collect hoti hai jaise hostname, username, CPU %, RAM % | Har 4 minutes mein |
-| 6 | 🔒 **Encrypted Buffer** | Local keystroke buffer Fernet encryption se secure hai. Koi bhi directly file read karke keys nahi dekh sakta | Flush hone par encrypt hota hai |
-| 7 | 🤖 **Telegram C2** | Full bot integration. Saara data direct aapke Telegram bot par aata hai. Koi local file nahi banti | Continuous |
-| 8 | 🕵️ **Stealth Mode** | Console window launch hote hi 1 second mein auto-hide ho jati hai. User ko pata bhi nahi chalega ki kuch chal raha hai | Instant |
+The original research implementation contains modules for keyboard monitoring, screenshots, webcam capture, clipboard monitoring, system telemetry, and Telegram communication.
 
 ---
 
-## 🧠 Technical Architecture---
+## 🚀 Research Modules
 
-## 🔧 Dependencies (Required Libraries)
-
-Yeh tool **sirf Windows operating system** par kaam karta hai kyunki ye `win32gui` use karta hai active window detection ke liye.
-
-| Library | Version | Purpose |
-|---------|---------|---------|
-| **Python** | 3.8+ | Base programming language |
-| **requests** | Latest | Telegram API se communicate karne ke liye |
-| **pynput** | Latest | Keyboard ke har button press ko capture karne ke liye |
-| **opencv-python** | Latest | Webcam se image capture karne ke liye |
-| **numpy** | Latest | Image processing ke liye |
-| **pyautogui** | Latest | Screenshots lene ke liye |
-| **psutil** | Latest | System CPU/RAM usage nikalne ke liye |
-| **pywin32** | Latest | Windows API se active window ka naam lene ke liye |
-| **cryptography** | Latest | Fernet encryption ke liye |
-| **Pillow** | Latest | Images manipulate karne aur overlay daalne ke liye |
-| **pyperclip** | Latest | Clipboard read karne ke liye |
+| Module                   | Purpose                                                                |
+| ------------------------ | ---------------------------------------------------------------------- |
+| ⌨️ Keyboard Monitoring   | Demonstrates the security risks of unauthorized keyboard capture       |
+| 📸 Screenshot Monitoring | Demonstrates desktop-capture exposure                                  |
+| 🎥 Webcam Access         | Demonstrates unauthorized camera-access risks                          |
+| 📋 Clipboard Monitoring  | Demonstrates sensitive clipboard-data exposure                         |
+| 💻 System Telemetry      | Demonstrates basic host information collection                         |
+| 🤖 Telegram Integration  | Demonstrates how telemetry could be transmitted to an external service |
 
 ---
 
-## 📦 Installation (Step-by-Step)
+## 🧠 Technical Architecture
 
-### Step 1: Python Install Karein
+```text
+┌──────────────────────────┐
+│      Test Endpoint       │
+└────────────┬─────────────┘
+             │
+     ┌───────┴────────┐
+     │                │
+ Keyboard          Screen
+ Capture            Capture
+     │                │
+     ├──────┬─────────┤
+     │      │         │
+ Clipboard Webcam  System Info
+     │      │         │
+     └──────┴─────────┘
+             │
+      Security Telemetry
+             │
+      Controlled Lab
+             │
+      Analysis / Detection
+```
 
-Agar Python nahi hai toh [python.org](https://python.org) se download karein.
+---
 
-Check karein:
+## 🔧 Dependencies
+
+The research implementation uses Python libraries including:
+
+| Library         | Purpose                     |
+| --------------- | --------------------------- |
+| `pynput`        | Keyboard-event handling     |
+| `opencv-python` | Camera/image processing     |
+| `Pillow`        | Image processing            |
+| `psutil`        | System telemetry            |
+| `requests`      | HTTP communication          |
+| `pyperclip`     | Clipboard access            |
+| `pywin32`       | Windows API integration     |
+| `cryptography`  | Cryptographic functionality |
+| `numpy`         | Numerical/image processing  |
+
+---
+
+## 📦 Installation
+
+### 1. Clone the repository
+
 ```bash
-python --version
+git clone https://github.com/vishalparmar73847464-cpu/keylogger_security.git
+cd keylogger_security
+```
 
+### 2. Create a virtual environment
 
+```bash
+python -m venv .venv
+```
 
+Windows:
+
+```powershell
+.venv\Scripts\activate
+```
+
+Linux/macOS:
+
+```bash
+source .venv/bin/activate
+```
+
+### 3. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🔐 Security & Privacy
+
+Never hard-code secrets such as API tokens inside source code.
+
+Use environment variables for credentials and keep `.env` files out of Git:
+
+```gitignore
+.env
+*.log
+__pycache__/
+.venv/
+```
+
+If a token has ever been committed to a public repository, **rotate/revoke it immediately**.
+
+---
+
+## 🛡️ Defensive Research
+
+This project can be used to study indicators associated with endpoint surveillance software.
+
+Recommended defensive controls include:
+
+* Application allowlisting
+* EDR/antivirus monitoring
+* Monitoring suspicious Python executables
+* Detecting unauthorized keyboard hooks
+* Monitoring unexpected webcam access
+* Monitoring clipboard-access behavior
+* Reviewing outbound connections
+* Restricting unauthorized Telegram/API traffic
+* Least-privilege execution
+* Network segmentation
+* Regular endpoint auditing
+
+---
+
+## 🧪 Recommended Lab
+
+Run experiments only inside an isolated test environment:
+
+```text
+Your Computer
+      │
+      ▼
+Virtual Machine
+      │
+      ├── Test Account
+      ├── Test Data
+      └── Monitoring Tools
+```
+
+Do not use real passwords, personal documents, private messages, or other sensitive information during testing.
+
+---
+
+## 📚 Educational Goals
+
+This project is useful for learning about:
+
+* Endpoint security
+* Malware behavior analysis
+* EDR detection
+* Windows security
+* Python security research
+* Network telemetry
+* Incident response
+* MITRE ATT&CK mapping
+* Security monitoring
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome for **defensive and educational improvements**, including:
+
+* Detection rules
+* YARA/Sigma research
+* EDR telemetry analysis
+* IOC documentation
+* Safe laboratory simulations
+* Security documentation
+
+Please do not submit features intended to improve stealth, credential theft, persistence, or unauthorized data collection.
+
+---
+
+## ⚖️ Legal Disclaimer
+
+This repository is provided for **authorized security research and educational purposes only**.
+
+The developer is not responsible for misuse of this software. You are responsible for obtaining appropriate authorization before conducting any security testing.
+
+**Ethical hacking requires explicit authorization.**
+
+---
+
+## 👨‍💻 Developer
+
+**Vishal Pentest**
+
+Cybersecurity Research • Ethical Hacking • Security Testing
+
+---
+
+⭐ If this project helps your security research, consider starring the repository.
 
