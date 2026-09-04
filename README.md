@@ -1,86 +1,135 @@
-# Ultimate Keylogger Security Lab
+# ULTIMATE KEYLOGGER v4.1
 
 > **Developer:** Vishal Pentest
-> **Purpose:** Authorized Security Research & Controlled Lab Testing
+> **Version:** 4.1
+> **Purpose:** Authorized Penetration Testing & Security Research
 
-⚠️ **Warning:** This project is intended only for systems where you have explicit authorization to perform security testing. Do not deploy it on other people's devices or use it to collect credentials, private communications, or personal data.
+⚠️ **LEGAL WARNING:** This project is intended only for authorized security testing, controlled laboratory environments, and cybersecurity research. Do not deploy it on systems without explicit permission.
+
+---
+
+## 📋 Vishal Pentest Ka Sandesh
+
+> *"Yeh project cybersecurity professionals aur authorized penetration testers ko endpoint-monitoring risks samajhne aur controlled environments mein security research karne mein madad karta hai. Hamesha permission lekar testing karein aur collected data ko responsibly handle karein."*
+>
+> — **Vishal Pentest**
+
+---
+
+## 📑 Table of Contents
+
+* [Overview](#-overview)
+* [Key Features](#-key-features)
+* [Technical Architecture](#-technical-architecture)
+* [Requirements](#-requirements)
+* [Installation](#-installation)
+* [Configuration](#-configuration)
+* [Usage](#-usage)
+* [Security & Privacy](#-security--privacy)
+* [Defensive Research](#-defensive-research)
+* [Version History](#-version-history)
+* [Contributing](#-contributing)
+* [Developer](#-developer)
+* [Legal Disclaimer](#-legal-disclaimer)
 
 ---
 
 ## 📋 Overview
 
-**Ultimate Keylogger Security Lab** is a cybersecurity research project designed to demonstrate how endpoint monitoring threats can capture user-input and system telemetry.
+**ULTIMATE KEYLOGGER v4.1** is a Python-based cybersecurity research project designed to demonstrate endpoint-monitoring and data-collection risks in a controlled environment.
 
-The project can be used in an isolated laboratory to study:
+The research implementation contains modules related to:
 
-* Endpoint monitoring techniques
-* Keyboard-input capture risks
-* Screenshot monitoring risks
-* Clipboard exposure
-* Webcam-access risks
-* Host/system telemetry
-* Security detection and defensive controls
-* Data-exfiltration indicators
+* ⌨️ Keyboard-event monitoring
+* 📸 Screenshot capture
+* 🎥 Webcam access
+* 📋 Clipboard monitoring
+* 💻 System telemetry
+* 🤖 Telegram API communication
 
-The original research implementation contains modules for keyboard monitoring, screenshots, webcam capture, clipboard monitoring, system telemetry, and Telegram communication.
+The implementation initializes Telegram configuration and the main monitoring class in the Python source.
 
 ---
 
-## 🚀 Research Modules
+## 🚀 Key Features
 
-| Module                   | Purpose                                                                |
-| ------------------------ | ---------------------------------------------------------------------- |
-| ⌨️ Keyboard Monitoring   | Demonstrates the security risks of unauthorized keyboard capture       |
-| 📸 Screenshot Monitoring | Demonstrates desktop-capture exposure                                  |
-| 🎥 Webcam Access         | Demonstrates unauthorized camera-access risks                          |
-| 📋 Clipboard Monitoring  | Demonstrates sensitive clipboard-data exposure                         |
-| 💻 System Telemetry      | Demonstrates basic host information collection                         |
-| 🤖 Telegram Integration  | Demonstrates how telemetry could be transmitted to an external service |
+| # | Feature                 | Description                                                            |
+| - | ----------------------- | ---------------------------------------------------------------------- |
+| 1 | ⌨️ Keyboard Monitoring  | Demonstrates the security risks associated with keyboard-event capture |
+| 2 | 📸 Screenshot Capture   | Demonstrates desktop-monitoring risks                                  |
+| 3 | 🎥 Webcam Module        | Demonstrates risks associated with unauthorized camera access          |
+| 4 | 📋 Clipboard Monitoring | Demonstrates potential clipboard-data exposure                         |
+| 5 | 💻 System Telemetry     | Demonstrates basic host information and resource monitoring            |
+| 6 | 🔐 Cryptography         | Uses the Fernet cryptographic API                                      |
+| 7 | 🤖 Telegram API         | Demonstrates remote telemetry communication                            |
+| 8 | 🧵 Multi-threading      | Separates monitoring functions into independent threads                |
+| 9 | 🛡️ Error Handling      | Attempts to isolate failures between modules                           |
+
+The source implements separate threads for keyboard monitoring, screenshots, webcam activity, clipboard checks, buffer flushing, and system-status reporting.
 
 ---
 
 ## 🧠 Technical Architecture
 
 ```text
-┌──────────────────────────┐
-│      Test Endpoint       │
-└────────────┬─────────────┘
-             │
-     ┌───────┴────────┐
-     │                │
- Keyboard          Screen
- Capture            Capture
-     │                │
-     ├──────┬─────────┤
-     │      │         │
- Clipboard Webcam  System Info
-     │      │         │
-     └──────┴─────────┘
-             │
-      Security Telemetry
-             │
-      Controlled Lab
-             │
-      Analysis / Detection
+                    ┌─────────────────────┐
+                    │   Authorized Lab    │
+                    │    Test Endpoint    │
+                    └──────────┬──────────┘
+                               │
+                    ┌──────────▼──────────┐
+                    │ ULTIMATE KEYLOGGER  │
+                    │       v4.1           │
+                    └──────────┬──────────┘
+                               │
+        ┌──────────────────────┼──────────────────────┐
+        │                      │                      │
+        ▼                      ▼                      ▼
+   Keyboard               Screenshot              Webcam
+   Monitoring              Monitoring             Module
+        │                      │                      │
+        └──────────────────────┼──────────────────────┘
+                               │
+                 ┌─────────────▼─────────────┐
+                 │ Clipboard + System        │
+                 │       Telemetry            │
+                 └─────────────┬─────────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │ Security Analysis  │
+                    │ & Detection Lab     │
+                    └─────────────────────┘
 ```
 
 ---
 
-## 🔧 Dependencies
+## 🔧 Requirements
 
-The research implementation uses Python libraries including:
+### Operating System
 
-| Library         | Purpose                     |
-| --------------- | --------------------------- |
-| `pynput`        | Keyboard-event handling     |
-| `opencv-python` | Camera/image processing     |
-| `Pillow`        | Image processing            |
-| `psutil`        | System telemetry            |
-| `requests`      | HTTP communication          |
-| `pyperclip`     | Clipboard access            |
-| `pywin32`       | Windows API integration     |
-| `cryptography`  | Cryptographic functionality |
-| `numpy`         | Numerical/image processing  |
+The implementation contains Windows-specific functionality through `win32gui`, while also providing a fallback path when that module is unavailable.
+
+### Python
+
+```text
+Python 3.8+
+```
+
+### Dependencies
+
+```text
+opencv-python
+numpy
+pyautogui
+psutil
+requests
+pyperclip
+pynput
+pywin32
+cryptography
+Pillow
+```
 
 ---
 
@@ -89,25 +138,23 @@ The research implementation uses Python libraries including:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/vishalparmar73847464-cpu/keylogger_security.git
-cd keylogger_security
+git clone https://github.com/vishalparmar73847464-cpu/ultimate-keylogger.git
+cd ultimate-keylogger
 ```
 
 ### 2. Create a virtual environment
 
-```bash
-python -m venv .venv
-```
-
-Windows:
+#### Windows
 
 ```powershell
+python -m venv .venv
 .venv\Scripts\activate
 ```
 
-Linux/macOS:
+#### Linux/macOS
 
 ```bash
+python3 -m venv .venv
 source .venv/bin/activate
 ```
 
@@ -119,110 +166,260 @@ pip install -r requirements.txt
 
 ---
 
+## ⚙️ Configuration
+
+The source contains placeholders for Telegram configuration:
+
+```python
+TELEGRAM_TOKEN = "PASTE_YOUR_BOT_TOKEN_HERE"
+CHAT_ID = "PASTE_YOUR_CHAT_ID_HERE"
+```
+
+Never commit real API tokens, passwords, private keys, or credentials to GitHub.
+
+For secure research environments, use environment variables or another secrets-management mechanism.
+
+---
+
+## ▶️ Usage
+
+The project should be executed **only on an authorized test system**.
+
+Repository entry point:
+
+```text
+keylogger_v4_1.py
+```
+
+Example:
+
+```bash
+python keylogger_v4_1.py
+```
+
+### Recommended Test Environment
+
+Use:
+
+* A dedicated virtual machine
+* A dedicated test account
+* Dummy credentials
+* Synthetic test data
+* Network monitoring
+* Endpoint monitoring
+
+Do **not** use real passwords, personal documents, private communications, or other people's devices.
+
+---
+
 ## 🔐 Security & Privacy
 
-Never hard-code secrets such as API tokens inside source code.
+This type of software can potentially access highly sensitive information.
 
-Use environment variables for credentials and keep `.env` files out of Git:
+Potentially sensitive categories include:
+
+* Keyboard input
+* Clipboard contents
+* Screen contents
+* Camera images
+* Hostname
+* Username
+* System telemetry
+
+Therefore, all experiments should use synthetic data and isolated systems.
+
+### `.gitignore`
+
+Recommended:
 
 ```gitignore
 .env
 *.log
 __pycache__/
+*.py[cod]
 .venv/
+venv/
+.idea/
+.vscode/
 ```
 
-If a token has ever been committed to a public repository, **rotate/revoke it immediately**.
+### Secret Exposure
+
+If an API token or credential is accidentally pushed to a public repository:
+
+1. Revoke the credential immediately.
+2. Generate a replacement credential.
+3. Remove the secret from the repository.
+4. Review Git history for previous exposure.
+5. Investigate any systems that used the exposed credential.
 
 ---
 
 ## 🛡️ Defensive Research
 
-This project can be used to study indicators associated with endpoint surveillance software.
+This project can help security researchers understand indicators associated with endpoint surveillance software.
 
-Recommended defensive controls include:
+### Endpoint Indicators
 
-* Application allowlisting
+Security teams can investigate:
+
+* Unexpected keyboard-hook activity
+* Unusual camera access
+* Unexpected screenshot functionality
+* Suspicious clipboard access
+* Unknown Python executables
+* Unusual background processes
+
+### Network Indicators
+
+Investigate:
+
+* Unexpected outbound connections
+* Periodic API communication
+* Unknown external destinations
+* Suspicious Telegram Bot API traffic
+* Repeated telemetry requests
+
+### Recommended Controls
+
 * EDR/antivirus monitoring
-* Monitoring suspicious Python executables
-* Detecting unauthorized keyboard hooks
-* Monitoring unexpected webcam access
-* Monitoring clipboard-access behavior
-* Reviewing outbound connections
-* Restricting unauthorized Telegram/API traffic
+* Application allowlisting
 * Least-privilege execution
+* Network egress filtering
+* Process monitoring
+* Application control
+* Endpoint telemetry
 * Network segmentation
-* Regular endpoint auditing
+* Regular security audits
 
 ---
 
-## 🧪 Recommended Lab
-
-Run experiments only inside an isolated test environment:
+## 🧪 Laboratory Setup
 
 ```text
-Your Computer
-      │
-      ▼
-Virtual Machine
-      │
-      ├── Test Account
-      ├── Test Data
-      └── Monitoring Tools
+┌─────────────────────────┐
+│      Host Machine       │
+└────────────┬────────────┘
+             │
+             ▼
+┌─────────────────────────┐
+│      Isolated VM        │
+│                         │
+│  ┌───────────────────┐  │
+│  │   Test Account    │  │
+│  ├───────────────────┤  │
+│  │   Dummy Data      │  │
+│  ├───────────────────┤  │
+│  │ Monitoring Tools  │  │
+│  └───────────────────┘  │
+└─────────────────────────┘
 ```
 
-Do not use real passwords, personal documents, private messages, or other sensitive information during testing.
+Recommended analysis tools include:
+
+* Wireshark
+* Sysmon
+* Windows Event Viewer
+* EDR platforms
+* Process monitoring tools
+* Network traffic analysis tools
 
 ---
 
 ## 📚 Educational Goals
 
-This project is useful for learning about:
+This project can be used to study:
 
 * Endpoint security
 * Malware behavior analysis
-* EDR detection
 * Windows security
 * Python security research
-* Network telemetry
+* EDR detection
+* Threat hunting
+* Network monitoring
 * Incident response
-* MITRE ATT&CK mapping
-* Security monitoring
+* Security telemetry
+* MITRE ATT&CK research
+
+---
+
+## 📝 Version History
+
+### v4.1
+
+* Improved Telegram API handling
+* Multipart upload support
+* Improved keyboard-event parsing
+* Screenshot functionality
+* Webcam functionality
+* Clipboard monitoring
+* System-status telemetry
+* Multi-threaded module execution
+* Improved exception handling
+
+The source identifies the project as **ULTIMATE KEYLOGGER v4.1** and specifically documents improvements to Telegram integration and key parsing.
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome for **defensive and educational improvements**, including:
+Contributions are welcome for **defensive and educational improvements**.
 
-* Detection rules
-* YARA/Sigma research
-* EDR telemetry analysis
+Good contribution areas include:
+
+* YARA rules
+* Sigma rules
+* Detection engineering
 * IOC documentation
-* Safe laboratory simulations
+* EDR detection research
+* Threat-hunting queries
+* Network detection
 * Security documentation
+* Safe laboratory simulations
 
-Please do not submit features intended to improve stealth, credential theft, persistence, or unauthorized data collection.
-
----
-
-## ⚖️ Legal Disclaimer
-
-This repository is provided for **authorized security research and educational purposes only**.
-
-The developer is not responsible for misuse of this software. You are responsible for obtaining appropriate authorization before conducting any security testing.
-
-**Ethical hacking requires explicit authorization.**
+Please do not contribute features intended to improve unauthorized persistence, stealth, credential theft, or covert data collection.
 
 ---
 
 ## 👨‍💻 Developer
 
-**Vishal Pentest**
+### Vishal Pentest
 
-Cybersecurity Research • Ethical Hacking • Security Testing
+**Cybersecurity Research • Ethical Hacking • Security Testing**
+
+GitHub:
+
+```text
+https://github.com/vishalparmar73847464-cpu
+```
+
+Repository:
+
+```text
+https://github.com/vishalparmar73847464-cpu/ultimate-keylogger
+```
 
 ---
 
-⭐ If this project helps your security research, consider starring the repository.
+## ⚖️ Legal Disclaimer
 
+This repository is provided for **authorized cybersecurity research, education, and controlled penetration-testing environments only**.
+
+Unauthorized monitoring, interception, collection, or transmission of another person's information may violate applicable laws and regulations.
+
+The user is solely responsible for obtaining appropriate authorization before conducting any security testing.
+
+### Ethical hacking means authorized hacking.
+
+---
+
+## ⭐ Support
+
+If this project is useful for your cybersecurity research:
+
+⭐ Star the repository
+🐛 Report issues responsibly
+🤝 Contribute defensive research
+📚 Share security knowledge responsibly
+
+**Vishal Pentest — Cybersecurity Research & Ethical Hacking**
